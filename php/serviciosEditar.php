@@ -4,10 +4,10 @@ $id = mysql_real_escape_string($_GET['id']);
 if ( isset($_POST['servicio']) ){
 
 	$servicio 	= mysql_real_escape_string($_POST['servicio']);
-	$tipo		= mysql_real_escape_string($_POST['tipo']);
+	$tipo 		= mysql_real_escape_string($_POST['tipo']);
 	$precio  	= mysql_real_escape_string($_POST['precio']);
 
-	if ( mysql_query("UPDATE servicios SET servicio='".$servicio."',tipo='".$tipo."',precio='".$precio."'WHERE id='".$id."'") ){
+	if ( mysql_query("UPDATE servicios SET servicio='".$servicio."',tipo='".$tipo."',precio='".$precio."'WHERE idservicios='".$id."'") ){
 		$errorMsg = '<div class="alert alert-success">
 				<i class="fa fa-check"></i> Servicio editado correctamente.
 			</div>';
@@ -19,13 +19,13 @@ if ( isset($_POST['servicio']) ){
 
 }
 
-$data = mysql_fetch_object(mysql_query("SELECT * FROM servicios WHERE id='".$id."' LIMIT 1"));
+$data = mysql_fetch_object(mysql_query("SELECT * FROM servicios WHERE idservicios='".$id."' LIMIT 1"));
 
 ?>
 		<section class="panel panel-default">
 			<header class="panel-heading">
 				<div class="pull-right">
-					<a href="" class="return"><i class="fa fa-mail-reply"></i> Regresar</a>
+					<a href="?m=servicios" class="return"><i class="fa fa-mail-reply"></i> Regresar</a>
 				</div>
 				<i class="fa fa-columns icon"></i> Editar Servicio
 			</header>

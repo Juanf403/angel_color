@@ -22,7 +22,7 @@ if ( isset($_POST['servicio']) ){
 		<section class="panel panel-default">
 			<header class="panel-heading">
 				<div class="pull-right">
-					<a href="" class="return"><i class="fa fa-mail-reply"></i> Regresar</a>
+					<a href="?m=servicios" class="return"><i class="fa fa-mail-reply"></i> Regresar</a>
 				</div>
 				<i class="fa fa-columns icon"></i> Agregar Servicio
 			</header>
@@ -45,7 +45,7 @@ if ( isset($_POST['servicio']) ){
 						<div class="col-md-12 col-lg-4">
 							<div class="form-group">
 								<label class="col-lg-3 control-label">Precio</label>
-								<div class="col-lg-9"><input type="text" name="Precio" class="form-control" placeholder=""></div>
+								<div class="col-lg-9"><input type="text" name="precio" class="form-control" placeholder=""></div>
 							</div>
 						</div>
 					</div>
