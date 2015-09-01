@@ -9,9 +9,13 @@
 		<div class="col-sm-7 m-b-xs text-center">
 		</div>
 		<div class="col-sm-3">
-			<div class="input-group">
-				<input type="text" class="input-sm form-control" placeholder="Buscar"> <span class="input-group-btn"> <button class="btn btn-sm btn-default" type="button"> <i class="fa fa-search"></i> </button> </span>
-			</div>
+			<form action="" id="buscarProveedor" method="get">
+				<div class="input-group">
+					<input type="hidden" name="m" value="proveedores">
+					<input type="text" class="input-sm form-control" name="buscar" placeholder="Buscar">
+					<span class="input-group-btn"> <button class="btn btn-sm btn-default" id="buscar" type="submit"> <i class="fa fa-search"></i> </button> </span>
+				</div>
+			</form>
 		</div>
 	</div>
 
@@ -19,9 +23,9 @@
 		<table class="table table-striped b-t b-light">
 			<thead>
 				<tr>
-					<th width="300">Categoria</th>
-					<th>Nombre</th>
+					<th width="300">Nombre</th>
 					<th>Direcci&oacute;n</th>
+					<th>E-mail</th>
 					<th width="300">Tel&eacute;fono</th>
 					<th width="130"></th>
 				</tr>
@@ -35,21 +39,19 @@
 
 			if ( isset($_GET['buscar']) ){
 				$buscar = mysql_real_escape_string($_GET['buscar']);
-				$consulta  = "SELECT * FROM clientes WHERE 
+				$consulta  = "SELECT * FROM proveedores WHERE 
 					(nombre LIKE '%".$buscar."%' OR 
 						email LIKE '%".$buscar."%' OR 
 						telefono LIKE '%".$buscar."%' OR 
 						direccion LIKE '%".$buscar."%' OR 
-						colonia LIKE '%".$buscar."%' OR 
-						cp LIKE '%".$buscar."%' OR 
-						ciudad LIKE '%".$buscar."%' OR 
-						estado LIKE '%".$buscar."%' OR 
-						rfc LIKE '%".$buscar."%') 
+						telefono LIKE '%".$buscar."%' OR 
+						rfc LIKE '%".$buscar."%' OR 
+						cp LIKE '%".$buscar."%') 
 					ORDER BY nombre ASC";
-					$url = "admin.php?m=clientes&buscar=".$buscar;
+					$url = "admin.php?m=proveedores&buscar=".$buscar;
 			} else {
-				$consulta  = "SELECT * FROM clientes ORDER BY nombre ASC";
-				$url = "admin.php?m=clientes";
+				$consulta  = "SELECT * FROM proveedores ORDER BY nombre ASC";
+				$url = "admin.php?m=proveedores";
 			}
 
 ##### PAGINADOR #####
@@ -81,13 +83,12 @@ $consulta = mysql_query($consulta);
 ?>
 				<tr>
 					<td><?php echo $q->nombre; ?></td>
-					<td><?php echo $q->rfc; ?></td>
 					<td><?php echo $q->direccion; ?></td>
-					<td><?php echo $q->ciudad; ?></td>
+					<td><?php echo $q->email; ?></td>
 					<td><?php echo $q->telefono; ?></td>
 					<td>
-						<a href="admin.php?m=clientesEditar&id=<?php echo $q->idclientes; ?>" class="btn btn-sm btn-default"> <i class="fa fa-pencil"></i> </a> &nbsp;&nbsp;&nbsp;
-						<a href="admin.php?m=clientes&del=<?php echo $q->idclientes; ?>" class="btn btn-sm btn-danger"> <i class="fa fa-times"></i> </a>
+						<a href="admin.php?m=proveedoresEditar&id=<?php echo $q->idproveedores; ?>" class="btn btn-sm btn-default"> <i class="fa fa-pencil"></i> </a> &nbsp;&nbsp;&nbsp;
+						<a href="admin.php?m=proveedores&del=<?php echo $q->idproveedores; ?>" class="btn btn-sm btn-danger"> <i class="fa fa-times"></i> </a>
 					</td>
 				</tr>			
 <?php

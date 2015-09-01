@@ -2,16 +2,15 @@
 
 if ( isset($_POST['nombre']) ){
 
-	$categoria 			= mysql_real_escape_string($_POST['categoria']);
 	$nombre 			= mysql_real_escape_string($_POST['nombre']);
+	$email 				= mysql_real_escape_string($_POST['email']);
 	$direccion  		= mysql_real_escape_string($_POST['direccion']);
 	$telefono  			= mysql_real_escape_string($_POST['telefono']);
-	$contacto  			= mysql_real_escape_string($_POST['contacto']);
-	$correo  			= mysql_real_escape_string($_POST['correo']);
-	$rfc  				= mysql_real_escape_string($_POST['rfc']);
 	$descripcion  		= mysql_real_escape_string($_POST['descripcion']);
+	$rfc  				= mysql_real_escape_string($_POST['rfc']);
+	$cp  				= mysql_real_escape_string($_POST['cp']);
 
-	if ( mysql_query("INSERT INTO proveedores SET fecha='".date("Y-m-d")."',categoria='".$categoria."',nombre='".$nombre."',direccion='".$direccion."',telefono='".$telefono."',contacto='".$contacto."',email='".$correo."',rfc='".$rfc."',descripcion='".$descripcion."'") ){
+	if ( mysql_query("INSERT INTO proveedores SET fecha='".date("Y-m-d")."',nombre='".$nombre."',email='".$email."',telefono='".$telefono."',descripcion='".$descripcion."',rfc='".$rfc."',cp='".$cp."'") ){
 		$errorMsg = '<div class="alert alert-success">
 				<i class="fa fa-check"></i> Proveedor agregado correctamente.
 			</div>';
@@ -27,9 +26,9 @@ if ( isset($_POST['nombre']) ){
 		<section class="panel panel-default">
 			<header class="panel-heading">
 				<div class="pull-right">
-					<a href="" class="return"><i class="fa fa-mail-reply"></i> Regresar</a>
+					<a href="?m=proveedores" class="return"><i class="fa fa-mail-reply"></i> Regresar</a>
 				</div>
-				<i class="fa fa-tags icon"></i> Agregar Cliente
+				<i class="fa fa-tags icon"></i> Agregar Proveedor
 			</header>
 			<div class="panel-body">
 				<form class="bs-example form-horizontal" action="" method="post">
@@ -44,7 +43,7 @@ if ( isset($_POST['nombre']) ){
 						<div class="col-md-12 col-lg-6">
 							<div class="form-group">
 								<label class="col-lg-3 control-label">E-mail</label>
-								<div class="col-lg-9"><input type="text" name="e-mail" class="form-control" placeholder="correo@servidor.com"></div>
+								<div class="col-lg-9"><input type="text" name="email" class="form-control" placeholder="correo@servidor.com"></div>
 							</div>
 						</div>
 					</div>
@@ -66,17 +65,17 @@ if ( isset($_POST['nombre']) ){
 						<div class="col-md-6">
 							<div class="form-group">
 								<label class="col-lg-3 control-label">Descripción</label>
-								<div class="col-lg-9"><textarea class="form-control" name="descripcion[]" style="height:85px;" placeholder=""></textarea></div>
+								<div class="col-lg-9"><textarea class="form-control" name="descripcion" style="height:85px;" placeholder=""></textarea></div>
 							</div>
 						</div>
 						<div class="col-md-6">
 							<div class="form-group">
 								<label class="col-lg-3 control-label">RFC</label>
-								<div class="col-lg-9"><input type="text" name="RFC" class="form-control" placeholder=""></div>
+								<div class="col-lg-9"><input type="text" name="rfc" class="form-control" placeholder=""></div>
 							</div>
 							<div class="form-group">
 								<label class="col-lg-3 control-label">Codigo Postal</label>
-								<div class="col-lg-9"><input type="text" maxlength="5" name="codigopostal" class="form-control" placeholder="00000"></div>
+								<div class="col-lg-9"><input type="text" maxlength="5" name="cp" class="form-control" placeholder="00000"></div>
 							</div>
 						</div>
 					</div>
