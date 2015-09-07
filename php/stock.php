@@ -1,6 +1,6 @@
 <section class="panel panel-default pos-rlt clearfix">
 
-	<header class="panel-heading"> <i class="fa fa-file-text"></i> Stock </header>
+	<header class="panel-heading"> <i class="fa  "></i> Stock </header>
 	
 	<div class="row wrapper">
 		<div class="col-sm-2 m-b-xs">
@@ -40,17 +40,15 @@
 			if ( isset($_GET['buscar']) ){
 				$buscar = mysql_real_escape_string($_GET['buscar']);
 				$consulta  = "SELECT * FROM stock WHERE 
-					(nombre LIKE '%".$buscar."%' OR 
-						email LIKE '%".$buscar."%' OR 
-						telefono LIKE '%".$buscar."%' OR 
-						direccion LIKE '%".$buscar."%' OR 
-						colonia LIKE '%".$buscar."%' OR 
-						codigopostal LIKE '%".$buscar."%' OR 
-						rfc LIKE '%".$buscar."%') 
-					ORDER BY nombre ASC";
+					(articulo LIKE '%".$buscar."%' OR 
+						marca LIKE '%".$buscar."%' OR 
+						tipo LIKE '%".$buscar."%' OR 
+						stock LIKE '%".$buscar."%' OR 
+						observaciones LIKE '%".$buscar."%') 
+					ORDER BY articulo ASC";
 					$url = "admin.php?m=stock&buscar=".$buscar;
 			} else {
-				$consulta  = "SELECT * FROM stock ORDER BY nombre ASC";
+				$consulta  = "SELECT * FROM stock ORDER BY articulo ASC";
 				$url = "admin.php?m=stock";
 			}
 
@@ -82,10 +80,12 @@ $consulta = mysql_query($consulta);
 			while($q = mysql_fetch_object($consulta)){
 ?>
 				<tr>
-					<td><?php echo $q->nombre; ?></td>
-					<td><?php echo $q->direccion; ?></td>
-					<td><?php echo $q->email; ?></td>
-					<td><?php echo $q->telefono; ?></td>
+					<td><?php echo $q->articulo; ?></td>
+					<td><?php echo $q->marca; ?></td>
+					<td><?php echo $q->tipo; ?></td>
+					<td><?php echo $q->stock; ?></td>
+					<td><?php echo $q->precio; ?></td>
+					<td><?php echo $q->precioventa; ?></td>
 					<td>
 						<a href="admin.php?m=stockEditar&id=<?php echo $q->idstock; ?>" class="btn btn-sm btn-default"> <i class="fa fa-pencil"></i> </a> &nbsp;&nbsp;&nbsp;
 						<a href="admin.php?m=stock&del=<?php echo $q->idstock; ?>" class="btn btn-sm btn-danger"> <i class="fa fa-times"></i> </a>

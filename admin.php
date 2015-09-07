@@ -55,7 +55,7 @@ if ( isset($_GET['m']) ){
 			$paginaPHP = "php/stockAgregar.php";
 		break;
 		case "stockEditar":
-			$paginaPHP = "php/stockEditar4.php";
+			$paginaPHP = "php/stockEditar.php";
 		break;
 		case "activos":
 			$paginaPHP = "php/activos.php";

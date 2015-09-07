@@ -1,18 +1,19 @@
 <?php
 $id = mysql_real_escape_string($_GET['id']);
 
-if ( isset($_POST['nombre']) ){
+if ( isset($_POST['articulo']) ){
 
-	$categoria 	= mysql_real_escape_string($_POST['nombre']);
-	$correo 	= mysql_real_escape_string($_POST['correo']);
-	$direccion  = mysql_real_escape_string($_POST['direccion']);
-	$telefono  	= mysql_real_escape_string($_POST['telefono']);
-	$rfc  	= mysql_real_escape_string($_POST['rfc']);
-	$cp  	= mysql_real_escape_string($_POST['cp']);
+	$articulo 		= mysql_real_escape_string($_POST['articulo']);
+	$marca 			= mysql_real_escape_string($_POST['marca']);
+	$tipo  			= mysql_real_escape_string($_POST['tipo']);
+	$stock  		= mysql_real_escape_string($_POST['stock']);
+	$precio      	= mysql_real_escape_string($_POST['precio']);
+	$precioventa  	= mysql_real_escape_string($_POST['precioventa']);
+	$observaciones  	= mysql_real_escape_string($_POST['observaciones']);
 
-	if ( mysql_query("UPDATE clientes SET nombre='".$nombre."',correo='".$correo."',direccion='".$direccion."',telefono='".$telefono."',rfc='".$rfc."',cp='".$cp."' WHERE id='".$id."'") ){
+	if ( mysql_query("UPDATE stock SET fecha='".date("Y-m-d")."',articulo='".$articulo."',marca='".$marca."',tipo='".$tipo."',stock='".$stock."',precio='".$precio."',precioventa='".$precioventa."',observaciones='".$observaciones."'") ){
 		$errorMsg = '<div class="alert alert-success">
-				<i class="fa fa-check"></i> Cliente editado correctamente.
+				<i class="fa fa-check"></i> Objeto editado correctamente.
 			</div>';
 	} else {
 		$errorMsg = '<div class="alert alert-danger">
@@ -22,7 +23,7 @@ if ( isset($_POST['nombre']) ){
 
 }
 
-$data = mysql_fetch_object(mysql_query("SELECT * FROM clientes WHERE id='".$id."' LIMIT 1"));
+$data = mysql_fetch_object(mysql_query("SELECT * FROM stock WHERE idstock='".$id."' LIMIT 1"));
 
 ?>
 		<section class="panel panel-default">
@@ -36,44 +37,50 @@ $data = mysql_fetch_object(mysql_query("SELECT * FROM clientes WHERE id='".$id."
 				<form class="bs-example form-horizontal" action="" method="post">
 					<?php echo $errorMsg; ?>
 					<div class="row">
-						<div class="col-md-6">
+						<div class="col-md-12 col-lg-6">
 							<div class="form-group">
-								<label class="col-lg-3 control-label">Nombre</label>
-								<div class="col-lg-9"><input type="text" name="nombre" value="<?php echo $data->nombre; ?>" class="form-control" placeholder=""></div>
+								<label class="col-lg-3 control-label">Articulo</label>
+								<div class="col-lg-9"><input type="text" name="articulo" value="<?php echo $data->articulo; ?>" class="form-control" placeholder=""></div>
 							</div>
 						</div>
-						<div class="col-md-6">
+						<div class="col-md-12 col-lg-6">
 							<div class="form-group">
-								<label class="col-lg-2 control-label">E-mail</label>
-								<div class="col-lg-10"><input type="text" name="correo" value="<?php echo $data->correo; ?>" class="form-control" placeholder=""></div>
-							</div>
-						</div>
-					</div>
-					<div class="row">
-						<div class="col-md-6">
-							<div class="form-group">
-								<label class="col-lg-3 control-label">Direccion</label>
-								<div class="col-lg-9"><input type="text" name="direccion" value="<?php echo $data->direccion; ?>" class="form-control" placeholder=""></div>
-							</div>
-						</div>
-						<div class="col-md-6">
-							<div class="form-group">
-								<label class="col-lg-2 control-label">Telefono</label>
-								<div class="col-lg-10"><input type="text" name="telefono" value="<?php echo $data->telfono; ?>" class="form-control" placeholder=""></div>
+								<label class="col-lg-3 control-label">Marca</label>
+								<div class="col-lg-9"><input type="text" name="marca" value="<?php echo $data->marca; ?>" class="form-control" placeholder=""></div>
 							</div>
 						</div>
 					</div>
 					<div class="row">
-						<div class="col-md-6">
+						<div class="col-md-12 col-lg-6">
 							<div class="form-group">
-								<label class="col-lg-3 control-label">RFC</label>
-								<div class="col-lg-9"><input type="text" name="rfc" value="<?php echo $data->rfc; ?>" class="form-control" placeholder=""></div>
+								<label class="col-lg-3 control-label">Tipo</label>
+								<div class="col-lg-9"><input type="text" name="tipo" value="<?php echo $data->tipo; ?>" class="form-control" placeholder=""></div>
+							</div>
+						</div>
+						<div class="col-md-12 col-lg-6">
+							<div class="form-group">
+								<label class="col-lg-3 control-label">Stock</label>
+								<div class="col-lg-9"><input type="text" name="stock" value="<?php echo $data->stock; ?>" class="form-control" placeholder=""></div>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-3">
+							<div class="form-group">
+								<label class="col-lg-6 control-label">Precio</label>
+								<div class="col-lg-6"><input type="text" name="precio" value="<?php echo $data->precio; ?>" class="form-control" placeholder=""></div>
+							</div>
+						</div>
+						<div class="col-md-3">
+							<div class="form-group">
+								<label class="col-lg-6 control-label">Precio Venta</label>
+								<div class="col-lg-6"><input type="text" maxlength="" name="precioventa" value="<?php echo $data->precioventa; ?>" class="form-control" placeholder=""></div>
 							</div>
 						</div>
 						<div class="col-md-6">
 							<div class="form-group">
-								<label class="col-lg-2 control-label">CP</label>
-								<div class="col-lg-10"><input type="text" name="cp" value="<?php echo $data->cp; ?>" class="form-control" placeholder="00000"></div>
+								<label class="col-lg-3 control-label">Observaciones</label>
+								<div class="col-lg-9"><textarea class="form-control" name="observaciones" value="<?php echo $data->observaciones; ?>" style="height:85px;" placeholder=""></textarea></div>
 							</div>
 						</div>
 					</div>
@@ -81,9 +88,8 @@ $data = mysql_fetch_object(mysql_query("SELECT * FROM clientes WHERE id='".$id."
 					<div class="form-group text-right">
 						<div class="col-lg-12"> 
 							<button type="submit" class="btn btn-sm btn-success"><i class="fa fa-check icon"></i> Agregar</button>
-							<a href="admin.php?m=clientes" class="btn btn-sm btn-danger"><i class="fa fa-times icon"></i> Cancelar</a>
+							<a href="admin.php?m=stock" class="btn btn-sm btn-danger"><i class="fa fa-times icon"></i> Cancelar</a>
 						</div>
 					</div>
 				</form>
 			</div>
-		</section>
