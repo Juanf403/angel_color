@@ -1,15 +1,15 @@
 <?php
 
-if ( isset($_POST['nombre']) ){
+if ( isset($_POST['articulo']) ){
 
 	$articulo 	= mysql_real_escape_string($_POST['articulo']);
 	$marca 		= mysql_real_escape_string($_POST['marca']);
 	$cantidad 	= mysql_real_escape_string($_POST['cantidad']);
-	$telefono  	= mysql_real_escape_string($_POST['punitario']);
-	$punitario  = mysql_real_escape_string($_POST['contacto']);
+	$punitario  = mysql_real_escape_string($_POST['punitario']);
 	$total  	= mysql_real_escape_string($_POST['total']);
+	$adicional  = mysql_real_escape_string($_POST['adicional']);
 
-	if ( mysql_query("INSERT INTO requisiciones SET fecha='".date("Y-m-d")."',articulo='".$articulo."',marca='".$marca."',cantidad='".$cantidad."',punitario='".$punitario."',total='".$total."'") ){
+	if ( mysql_query("INSERT INTO requisiciones SET fecha='".date("Y-m-d")."',articulo='".$articulo."',marca='".$marca."',cantidad='".$cantidad."',punitario='".$punitario."',total='".$total."',adicional='".$adicional."'") ){
 		$errorMsg = '<div class="alert alert-success">
 				<i class="fa fa-check"></i> Requisicion solicitada correctamente.
 			</div>';
@@ -25,7 +25,7 @@ if ( isset($_POST['nombre']) ){
 		<section class="panel panel-default">
 			<header class="panel-heading">
 				<div class="pull-right">
-					<a href="" class="return"><i class="fa fa-mail-reply"></i> Regresar</a>
+					<a href="?m=stock" class="return"><i class="fa fa-mail-reply"></i> Regresar</a>
 				</div>
 				<i class="fa fa-shopping-cart icon"></i> Agregar Requisicion
 			</header>
@@ -69,7 +69,7 @@ if ( isset($_POST['nombre']) ){
 						<div class="col-sm-4">
 							<div class="form-group">
 								<label class="col-lg-3 control-label">Informcion Adicional</label>
-								<div class="col-lg-9"><textarea style="height:80px;" type="text" name="total" class="form-control" placeholder=""></textarea></div>
+								<div class="col-lg-9"><textarea style="height:80px;" type="text" name="adicional" class="form-control" placeholder=""></textarea></div>
 							</div>
 						</div>
 					</div>
