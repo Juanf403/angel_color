@@ -76,7 +76,7 @@ $consulta = mysql_query($consulta);
                     <td><?php echo $q->total; ?></td>
                     <td><?php echo $q->adicional; ?></td>
                     <td>
-                        <a href="admin.php?m=serviciosEditar&id=<?php echo $q->idservicios; ?>" class="btn btn-sm btn-default"> <i class="fa fa-pencil"></i> </a> &nbsp;&nbsp;&nbsp;
+                        <a href="admin.php?m=serviciosEditar&id=<?php echo $q->idservicios; ?>" class="btn btn-sm btn-success"> <i class="fa fa-check"></i> </a> &nbsp;&nbsp;&nbsp;
                         <a href="admin.php?m=servicios&del=<?php echo $q->idservicios; ?>" class="btn btn-sm btn-danger"> <i class="fa fa-times"></i> </a>
                     </td>
                 </tr>           

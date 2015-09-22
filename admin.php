@@ -126,10 +126,10 @@ $errorMsg = "";
 				<li><a class="btn btn-link" href="admin.php"> <i class="fa fa-home"></i> </a></li>
 <?php
 			if ($_SESSION['userPv'] != "3"){
-?>				<li><a class="btn btn-link" href="admin.php?m=usuarios"> <i class="fa fa-users"></i> </a></li>
-				<li><a class="btn btn-link" href="admin.php?m=endozos"> <i class="fa fa-list"></i> </a></li>
-				<li><a class="btn btn-link" href="admin.php?m=recibos"> <i class="fa fa-list-alt"></i> </a></li>
-				<li><a class="btn btn-link" href="admin.php?m=agentes"> <i class="fa fa-male"></i> </a></li>
+?>				<li><a class="btn btn-link" href="admin.php?m=clientes"> <i class="fa fa-users"></i> </a></li>
+				<li><a class="btn btn-link" href="admin.php?m=ventas"> <i class="fa fa-usd"></i> </a></li>
+				<li><a class="btn btn-link" href="admin.php?m=stock"> <i class="fa fa-file-text"></i> </a></li>
+				<li><a class="btn btn-link" href="admin.php?m=usuarios"> <i class="fa fa-plus-square"></i> </a></li>
 <?php
 			}
 ?>

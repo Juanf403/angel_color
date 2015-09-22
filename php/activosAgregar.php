@@ -2,11 +2,11 @@
 
 if ( isset($_POST['articulo']) ){
 
-	$categoria 	= mysql_real_escape_string($_POST['articulo']);
-	$nombre 	= mysql_real_escape_string($_POST['observaciones']);
-	$direccion  = mysql_real_escape_string($_POST['valor']);
+	$articulo 		 = mysql_real_escape_string($_POST['articulo']);
+	$observaciones 	 = mysql_real_escape_string($_POST['observaciones']);
+	$valor 			 = mysql_real_escape_string($_POST['valor']);
 
-	if ( mysql_query("INSERT INTO activos SET fecha='".date("Y-m-d")."',articulo='".$articulo."',observaciones='".$valor."',valor='") ){
+	if ( mysql_query("INSERT INTO activos SET fecha='".date("Y-m-d")."',articulo='".$articulo."',observaciones='".$observaciones."',valor='".$valor."'") ){
 		$errorMsg = '<div class="alert alert-success">
 				<i class="fa fa-check"></i> Activo agregado correctamente.
 			</div>';
@@ -14,6 +14,7 @@ if ( isset($_POST['articulo']) ){
 		$errorMsg = '<div class="alert alert-danger">
 			<i class="fa fa-times"></i> Error, intenta nuevamente.
 		</div>';
+		 $errorMsg = "INSERT INTO activos SET fecha='".date("Y-m-d")."',articulo='".$articulo."',observaciones='".$observaciones."',valor='".$valor."''";
 	}
 
 }
@@ -30,13 +31,13 @@ if ( isset($_POST['articulo']) ){
 				<form class="bs-example form-horizontal" action="" method="post">
 					<?php echo $errorMsg; ?>
 					<div class="row">
-						<div class="col-md-12 col-lg-3	">
+						<div class="col-md-12 col-lg-3">
 							<div class="form-group">
 								<label class="col-lg-3 control-label">Articulo: </label>
 								<div class="col-lg-9"><input type="text" name="articulo" class="form-control" placeholder=""></div>
 							</div>
 						</div>
-						<div class="col-md-12 col-lg-3">
+						<div class="col-md-12 col-lg-6">
 							<div class="form-group">
 								<label class="col-lg-3 control-label">Observaciones: </label>
 								<div class="col-lg-9"><textarea type="text" name="observaciones" class="form-control" placeholder=""></textarea> </div>

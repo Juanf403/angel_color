@@ -1,6 +1,6 @@
 <section class="panel panel-default pos-rlt clearfix">
 
-	<header class="panel-heading"> <i class="fa  "></i> Stock </header>
+	<header class="panel-heading"> <i class="fa fa-file-text-o "></i> Stock </header>
 	
 	<div class="row wrapper">
 		<div class="col-sm-2 m-b-xs">
