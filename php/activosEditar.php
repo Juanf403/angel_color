@@ -1,16 +1,13 @@
 <?php
 $id = mysql_real_escape_string($_GET['id']);
 
-if ( isset($_POST['nombre']) ){
+if ( isset($_POST['articulo']) ){
 
-	$categoria 	= mysql_real_escape_string($_POST['articulo']);
-	$correo 	= mysql_real_escape_string($_POST['observaciones']);
-	$direccion  = mysql_real_escape_string($_POST['valor']);
-	$telefono  	= mysql_real_escape_string($_POST['telefono']);
-	$rfc  	= mysql_real_escape_string($_POST['rfc']);
-	$cp  	= mysql_real_escape_string($_POST['cp']);
+	$articulo 		 = mysql_real_escape_string($_POST['articulo']);
+	$observaciones 	 = mysql_real_escape_string($_POST['observaciones']);
+	$valor 			 = mysql_real_escape_string($_POST['valor']);
 
-	if ( mysql_query("UPDATE activos SET articulo='".$articulo."',valor='".$valor."'") ){
+	if ( mysql_query("UPDATE activos SET fecha='".date("Y-m-d")."',articulo='".$articulo."',observaciones='".$observaciones."',valor='".$valor."'") ){
 		$errorMsg = '<div class="alert alert-success">
 				<i class="fa fa-check"></i> Activo editado correctamente.
 			</div>';
@@ -22,7 +19,7 @@ if ( isset($_POST['nombre']) ){
 
 }
 
-$data = mysql_fetch_object(mysql_query("SELECT * FROM activos WHERE id='".$id."' LIMIT 1"));
+$data = mysql_fetch_object(mysql_query("SELECT * FROM activos WHERE idactivos='".$id."' LIMIT 1"));
 
 ?>
 		<section class="panel panel-default">
@@ -36,13 +33,13 @@ $data = mysql_fetch_object(mysql_query("SELECT * FROM activos WHERE id='".$id."'
 				<form class="bs-example form-horizontal" action="" method="post">
 					<?php echo $errorMsg; ?>
 					<div class="row">
-						<div class="col-md-12 col-lg-3	">
+						<div class="col-md-12 col-lg-3">
 							<div class="form-group">
 								<label class="col-lg-3 control-label">Articulo: </label>
 								<div class="col-lg-9"><input type="text" name="articulo" value="<?php echo $data->articulo; ?>" class="form-control" placeholder=""></div>
 							</div>
 						</div>
-						<div class="col-md-12 col-lg-3">
+						<div class="col-md-12 col-lg-6">
 							<div class="form-group">
 								<label class="col-lg-3 control-label">Observaciones: </label>
 								<div class="col-lg-9"><textarea type="text" name="observaciones" value="<?php echo $data->observaciones; ?>" class="form-control" placeholder=""></textarea> </div>
