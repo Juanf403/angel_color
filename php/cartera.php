@@ -1,10 +1,10 @@
 <section class="panel panel-default pos-rlt clearfix">
 
-	<header class="panel-heading"> <i class="fa fa-users"></i> Clientes </header>
+	<header class="panel-heading"> <i class="fa fa-users"></i> Cartera de Alumnos </header>
 	
 	<div class="row wrapper">
 		<div class="col-sm-2 m-b-xs">
-			<a href="admin.php?m=clientesAgregar" class="pull-left btn btn-sm btn-success"><i class="fa fa-plus"></i> Nuevo Cliente </a>
+			<a href="admin.php?m=carteraAgregar" class="pull-left btn btn-sm btn-success"><i class="fa fa-plus"></i> Nuevo Alumno </a>
 		</div>
 		<div class="col-sm-7 m-b-xs text-center">
 		</div>
@@ -84,8 +84,8 @@
 					<td><?php echo $q->telefono; ?></td>
 					<td><?php echo $q->email; ?></td>
 					<td>
-						<a href="admin.php?m=clientesEditar&id=<?php echo $q->idclientes; ?>" class="btn btn-sm btn-default"> <i class="fa fa-pencil"></i> </a> &nbsp;&nbsp;&nbsp;
-						<a href="admin.php?m=clientes&del=<?php echo $q->idclientes; ?>" class="btn btn-sm btn-danger"> <i class="fa fa-times"></i> </a>
+						<a href="admin.php?m=carteraEditar&id=<?php echo $q->idcartera; ?>" class="btn btn-sm btn-default"> <i class="fa fa-pencil"></i> </a> &nbsp;&nbsp;&nbsp;
+						<a href="admin.php?m=cartera&del=<?php echo $q->idcartera; ?>" class="btn btn-sm btn-danger"> <i class="fa fa-times"></i> </a>
 					</td>
 				</tr>			
 <?php

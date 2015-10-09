@@ -39,7 +39,7 @@ $data = mysql_fetch_object(mysql_query("SELECT * FROM activos WHERE idactivos='"
 								<div class="col-lg-9"><input type="text" name="articulo" value="<?php echo $data->articulo; ?>" class="form-control" placeholder=""></div>
 							</div>
 						</div>
-						<div class="col-md-12 col-lg-6">
+						<div class="col-md-12 col-lg-6b">
 							<div class="form-group">
 								<label class="col-lg-3 control-label">Observaciones: </label>
 								<div class="col-lg-9"><textarea type="text" name="observaciones" value="<?php echo $data->observaciones; ?>" class="form-control" placeholder=""></textarea> </div>
